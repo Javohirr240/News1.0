@@ -1,18 +1,15 @@
 {% extends 'news/base.html' %}
-{% load static %}
-{% block title %} DELETE {% endblock %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
-            <div class="contact_area text-center">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div>{{ news.title|truncatewords:5 }}: O'chirmoqchimisiz</div>
-                    <input type="submit" value="Tasdiqlash">
-                </form>
-            </div>
+          <div class="contact_area text-center">
+                  <h2>Chiqish bajarildi</h2>
+                  <p>Siz tizimdan chiqdingiz.</p>
+                  <a href="{% url 'login' %}" class="btn btn-primary">Qaytadan kirish</a>
+                  <a href="{% url 'index' %}" class="btn btn-secondary">Bosh sahifa</a>
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">

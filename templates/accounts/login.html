@@ -1,18 +1,18 @@
 {% extends 'news/base.html' %}
-{% load static %}
-{% block title %} DELETE {% endblock %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
-            <div class="contact_area text-center">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div>{{ news.title|truncatewords:5 }}: O'chirmoqchimisiz</div>
-                    <input type="submit" value="Tasdiqlash">
-                </form>
-            </div>
+          <div class="contact_area text-center">
+              <h2>Veb sayitga kirish - login</h2>
+              <p>Iltomos, sayitga kirish uchun formani to'ldiring</p>
+              <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit">Login</button>
+              </form>
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">

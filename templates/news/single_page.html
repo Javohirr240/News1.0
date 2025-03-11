@@ -15,10 +15,12 @@
             <div class="single_page_content"> <img class="img-center" src="{{ news_detail.image.url }}" alt="">
               <p>{{ news_detail.body }}</p>
               <blockquote> {{ news_detail.body }} </blockquote>
+                {% if user.is_authenticated and user.username == 'js' %}
             <ol class="breadcrumb">
                 <li><a href="{% url 'updateview' news_detail.slug %}" class="">Tahrirlash</a></li>
                 <li><a href="{% url 'deleteview' news_detail.slug %}" class="">O'chirish</a></li>
             </ol>
+                {% endif %}
               <ul>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>

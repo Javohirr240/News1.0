@@ -36,6 +36,11 @@
               <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
               <li><a href="{% url '404' %}">Biz haqimizda</a></li>
               <li><a href="{% url 'contact' %}">Biz bilan bog'lanish</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">logout: {{ user.username }}</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">login</a></li>
+                {% endif %}
             </ul>
           </div>
           <div class="header_top_right">
@@ -64,7 +69,9 @@
                 {% endfor %}
           <li><a href="{% url 'contact' %}">Contact Us</a></li>
           <li><a href="{% url '404' %}">404 Page</a></li>
+        {% if user.is_authenticated %}
           <li><a href="{% url 'createview' %}">+aDD New</a></li>
+        {% endif %}
         </ul>
       </div>
     </nav>
