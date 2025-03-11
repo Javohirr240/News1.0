@@ -1,0 +1,22 @@
+.container-fluid{
+    background-color: #9ec5fe;
+}
+.col-left{
+    font-size: 2.5rem;
+    padding: 1rem;
+    text-align: left;
+    color: white;
+}
+.col-right{
+    text-align: right;
+    padding: 1rem;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    width: 1300px;
+    margin: 0 auto;
+    padding: 3rem;
+}

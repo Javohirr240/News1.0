@@ -1,0 +1,82 @@
+{% extends 'news/base.html' %}
+{% block content %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+            <div class="single_post_content">
+            {% for news in news_category %}
+            {% if forloop.first %}
+            <h2><span>{{ news.category }}</span></h2>
+            {% endif %}
+            {% endfor %}
+            <div class="single_post_content_left">
+              <ul class="business_catgnav  wow fadeInDown">
+                  {% for news in news_category %}
+                  {% if forloop.first %}
+                <li>
+                  <figure class="bsbig_fig"> <a href="{{ news.get_absolute_url }}" class="featured_img"> <img alt="" src="{{ news.image.url }}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{ news.get_absolute_url }}">{{ news.title|truncatewords:7 }}</a> </figcaption>
+                    <p>{{ news.body|truncatewords:11 }}</p>
+                  </figure>
+                </li>
+                  {% endif %}
+                  {% endfor %}
+              </ul>
+            </div>
+            <div class="single_post_content_right">
+              <ul class="spost_nav">
+                  {% for news in news_category %}
+                    {% if forloop.counter > 1 %}
+                <li>
+                  <div class="media wow fadeInDown"> <a href="{{ news.get_absolute_url }}" class="media-left"> <img alt="" src="{{ news.image.url }}"> </a>
+                    <div class="media-body"> <a href="{{ news.get_absolute_url }}" class="catg_title"> {{ news.body|truncatewords:9 }}</a> </div>
+                  </div>
+                </li>
+                    {% endif %}
+                  {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Ommabop</span></h2>
+            <ul class="spost_nav">
+                {% if sport_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ sport_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ sport_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ sport_one.get_absolute_url }}" class="catg_title">{{ sport_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if mahalliy_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ mahalliy_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ mahalliy_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ mahalliy_one.get_absolute_url }}" class="catg_title">{{ mahalliy_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if xorij_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ xorij_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ xorij_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ xorij_one.get_absolute_url }}" class="catg_title">{{ xorij_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if texnik_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ texnik_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ texnik_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ texnik_one.get_absolute_url }}" class="catg_title">{{ texnik_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+      </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+{% block title %}News Detail{% endblock title %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>{{ news_detail.title }}</h3>
+            <p>{{ news_detail.body }}</p>
+        </div>
+        <div class="col-7 btn-group-vertical">
+            <img src="{{ news_detail.image.url }}" class="img-fluid" alt="detail_image">
+            <hr>
+            <div class="align-content-center h5">publish time: {{ news_detail.published_time }}</div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

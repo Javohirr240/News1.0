@@ -1,0 +1,58 @@
+{% extends 'news/base.html' %}
+{% block content %}
+<section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="contact_area">
+            <h2>Contact Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <form action="#" class="contact_form" method="post">{% csrf_token %}
+              <input class="form-control" type="text" placeholder="Name*" name="name">
+              <input class="form-control" type="email" placeholder="Email*" name="email">
+              <textarea class="form-control" cols="30" rows="10" placeholder="Message*" name="message"></textarea>
+              <input type="submit" value="Xabar jo'natish">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Ommabop</span></h2>
+            <ul class="spost_nav">
+                {% if sport_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ sport_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ sport_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ sport_one.get_absolute_url }}" class="catg_title">{{ sport_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if mahalliy_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ mahalliy_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ mahalliy_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ mahalliy_one.get_absolute_url }}" class="catg_title">{{ mahalliy_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if xorij_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ xorij_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ xorij_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ xorij_one.get_absolute_url }}" class="catg_title">{{ xorij_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+                {% if texnik_one %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{ texnik_one.get_absolute_url }}" class="media-left"> <img alt="" src="{{ texnik_one.image.url }}"> </a>
+                  <div class="media-body"> <a href="{{ texnik_one.get_absolute_url }}" class="catg_title">{{ texnik_one.title|truncatewords:7 }}</a> </div>
+                </div>
+              </li>
+                {% endif %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
