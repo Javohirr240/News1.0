@@ -21,3 +21,10 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})
+
+def dashboardView(request):
+    user = request.user
+    context = {
+        'user': user,
+    }
+    return render(request, 'accounts/user_profil.html', context)
