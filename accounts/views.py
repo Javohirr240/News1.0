@@ -27,4 +27,4 @@ def dashboardView(request):
     context = {
         'user': user,
     }
-    return render(request, 'accounts/user_profil.html', context)
+    return render(request, 'accounts/user_profile.html', context)
