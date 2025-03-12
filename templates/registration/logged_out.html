@@ -1,17 +1,15 @@
 {% extends 'news/base.html' %}
+{% block title %}Logout{% endblock title %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="contact_area text-center">
-              <h2>Veb sayitga kirish - login</h2>
-              <p>Iltomos, sayitga kirish uchun formani to'ldiring</p>
-              <form action="" method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {{ form.as_p }}
-                  <button type="submit">Login</button>
-              </form>
+                  <h2>Chiqish bajarildi</h2>
+                  <p>Siz tizimdan chiqdingiz.</p>
+                  <a href="{% url 'login' %}" class="btn btn-primary">Qaytadan kirish</a>
+                  <a href="{% url 'index' %}" class="btn btn-secondary">Bosh sahifa</a>
           </div>
         </div>
       </div>
