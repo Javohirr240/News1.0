@@ -37,18 +37,19 @@
               <li><a href="{% url '404' %}">Biz haqimizda</a></li>
               <li><a href="{% url 'contact' %}">Biz bilan bog'lanish</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" style="color: #FFFFFF">logout: {{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}">logout: {{ user.username }}</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" style="color: #FFFFFF">login</a></li>
+                    <li><a href="{% url 'login' %}">login</a></li>
                 {% endif %}
             </ul>
           </div>
           <div class="header_top_right">
               {% if user.is_authenticated %}
                   <p> | <a href="{% url 'profile' %}" style="color: #D082CF"> Profile</a></p>
-                  <p> | <a href="{% url 'signup' %}" style="color: #D082CF">signup</a></p>
+              {% else %}
+              <p>| <a href="{% url 'signup' %}" style="color: #D082CF">Signup</a></p>
               {% endif %}
-            <p>{% now "JS H F Y H:i" %}</p>
+            <p>{% now "JS H F Y H:i" %} </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import AbstractUser
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -36,5 +35,5 @@ def dashboardView(request):
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
-    template_name = 'accounts/signup.html'
     success_url = reverse_lazy('login')
+    template_name = 'accounts/signup.html'
