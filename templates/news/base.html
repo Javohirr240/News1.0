@@ -46,8 +46,9 @@
           <div class="header_top_right">
               {% if user.is_authenticated %}
                   <p> | <a href="{% url 'profile' %}" style="color: #D082CF"> Profile</a></p>
-              {% endif %}
+              {% else %}
               <p>| <a href="{% url 'signup' %}" style="color: #D082CF">Signup</a></p>
+              {% endif %}
             <p>{% now "JS H F Y H:i" %} </p>
           </div>
         </div>
