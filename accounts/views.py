@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from .forms import SignUpForm
 
 from .forms import LoginForm
 
@@ -34,6 +35,6 @@ def dashboardView(request):
     return render(request, 'accounts/user_profile.html', context)
 
 class SignUpView(CreateView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
     success_url = reverse_lazy('login')
     template_name = 'accounts/signup.html'
