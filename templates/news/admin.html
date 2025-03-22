@@ -1,13 +1,29 @@
 {% extends 'news/base.html' %}
-{% block title %}Password change Done{% endblock title %}
+{% block title %}404{% endblock title %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
-          <div class="contact_area text-center">
-              <h2>{{ user.username }} Parolingizni tiklash uchun sizni elektroni pochtangizga havola jo'natildi. Havolga kirib parolgizni tiklashingiz mumkin</h2>
-          </div>
+              <table class="table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>Username</th>
+                    <th>Ism</th>
+                    <th>Familiya</th>
+                    <th>Email</th>
+                </tr>
+
+                  {% for user in users %}
+                      <tr>
+                      <th>{{ user.username }}</th>
+                      <th>{{ user.first_name }}</th>
+                      <th>{{ user.last_name }}</th>
+                      <th>{{ user.email }}</th>
+                      </tr>
+                  {% endfor %}
+
+              </table>
+
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">

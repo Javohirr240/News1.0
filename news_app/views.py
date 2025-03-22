@@ -1,5 +1,8 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
@@ -14,7 +17,7 @@ from django.views.generic import (
 )
 from .forms import ContactForm
 from .models import News, Category
-
+from .mixins import CustomMixins
 
 # Create your views here.
 class NewsListView(ListView):
@@ -29,7 +32,7 @@ class NewsListView(ListView):
         context['sport_news'] = News.published.filter(category__name='Sport')[:5]
         context['texnik_news'] = News.published.filter(category__name='Texnika')[:5]
         return context
-class NewsDetailView(DetailView):
+class NewsDetailView(LoginRequiredMixin,DetailView):
     model = News
     template_name = 'news/single_page.html'
     context_object_name = 'news_detail'
@@ -59,17 +62,19 @@ class ContactsFormView(TemplateView):
 
         return render(request, self.template_name, {'form': form})
 
-class NewsUpdateView(UpdateView):
+
+class NewsUpdateView(CustomMixins,UpdateView):
     model = News
     template_name = 'news/update.html'
     fields = ['title', 'body','image','category','status']
 
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(CustomMixins,DeleteView):
     model = News
     template_name = 'news/delete.html'
     success_url = reverse_lazy('index')
 
-class NewsCreateView(CreateView):
+
+class NewsCreateView(CustomMixins, CreateView ):
     model = News
     template_name = 'news/create.html'
     fields = ['title', 'body','image','category','status']
@@ -77,3 +82,12 @@ class NewsCreateView(CreateView):
         if self.object.status == 'DF':
             return reverse_lazy('index')
         return reverse_lazy('detailview', kwargs={'slug': self.object.slug})
+
+@login_required()
+@user_passes_test(lambda u: u.is_superuser)
+def adminView(request):
+    users = User.objects.filter(is_superuser=True)
+    context = {
+        'users': users,
+    }
+    return render(request, 'news/admin.html', context)

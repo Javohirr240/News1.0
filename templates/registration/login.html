@@ -12,6 +12,8 @@
                   {% csrf_token %}
                   {{ form.as_p }}
                   <button type="submit">Login</button>
+                  <h4><a href="{% url 'password_reset' %}">Parolni tiklash</a></h4>
+                  <h4><a href="{% url 'signup' %}">Ro'yxatdan o'tish</a></h4>
               </form>
           </div>
         </div>

@@ -74,9 +74,10 @@
                 {% endfor %}
           <li><a href="{% url 'contact' %}">Contact Us</a></li>
           <li><a href="{% url '404' %}">404 Page</a></li>
-        {% if user.is_authenticated %}
+
           <li><a href="{% url 'createview' %}">+aDD New</a></li>
-        {% endif %}
+            <li><a href="{% url 'adminpages' %}">admins</a></li>
+
         </ul>
       </div>
     </nav>

@@ -7,10 +7,12 @@ from .views import (
     NewsUpdateView,
     NewsDeleteView,
     NewsCreateView,
+    adminView
 )
 from django.views.generic import TemplateView
 urlpatterns = [
     path('', NewsListView.as_view(), name='index'),  # Asosiy sahifa
+    path('adminpages/', adminView, name='adminpages'),
     path('news/', NewsListView.as_view(), name='newsview'),  # Yangiliklar ro‘yxati
     path('news/create/', NewsCreateView.as_view(), name='createview'),  # Yangilik yaratish
     path('news/<slug:slug>/update/', NewsUpdateView.as_view(), name='updateview'),  # Yangilikni yangilash

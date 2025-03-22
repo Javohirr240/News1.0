@@ -1,12 +1,13 @@
 {% extends 'news/base.html' %}
-{% block title %}Password change Done{% endblock title %}
+{% block title %}Register_done{% endblock %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
-          <div class="contact_area text-center">
-              <h2>{{ user.username }} Parolingizni tiklash uchun sizni elektroni pochtangizga havola jo'natildi. Havolga kirib parolgizni tiklashingiz mumkin</h2>
+          <div class="contact_area">
+              <p>Muvaffaqiyatli ro'yxatdan o'tdingiz</p>
+              <p>Endi saytga <a href="{% url 'login' %}">login</a> qilishingiz mumkin </p>
           </div>
         </div>
       </div>
