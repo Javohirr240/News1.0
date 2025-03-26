@@ -1,6 +1,7 @@
 {% extends 'news/base.html' %}
 {% load static %}
-{% block title %} UPDATE {% endblock %}
+{% load i18n %}
+{% block title %}{% blocktrans %}UPDATE{% endblocktrans %}{% endblock %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
@@ -10,7 +11,7 @@
                 <form action="" method="post" class="form-inline">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input type="submit" value="Tahrirlash" class="btn btn-primary">
+                    <input type="submit" value="{% blocktrans %}Tahrirlash{% endblocktrans %}" class="btn btn-primary">
                 </form>
             </div>
         </div>
@@ -18,7 +19,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Ommabop</span></h2>
+            <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
             <ul class="spost_nav">
                 {% if sport_one %}
               <li>

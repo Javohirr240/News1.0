@@ -1,5 +1,7 @@
 {% extends 'news/base.html' %}
-{% block title %}New Detail{% endblock title %}
+{% load hitcount_tags %}
+{% load i18n %}
+{% block title %}{% blocktrans %}New Detail{% endblocktrans %}{% endblock title %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
@@ -7,21 +9,41 @@
         <div class="left_content">
           <div class="single_page">
             <ol class="breadcrumb">
-              <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
+              <li><a href="{% url 'index' %}">{% blocktrans %}Bosh sahifa{% endblocktrans %}</a></li>
               <li><a href="{% url 'categoryview' news_detail.category %}">{{ news_detail.category }}</a></li>
               <li class="active">{{ news_detail.id }}</li>
             </ol>
             <h1>{{ news_detail.title }}</h1>
-              <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>Wpfreeware</a> <span><i class="fa fa-calendar"></i>{{ news_detail.published_time }}</span> <a href="{% url 'categoryview' news_detail.category %}"><i class="fa fa-tags"></i>{{ news_detail.category }}</a></div>
+
+              <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>Wpfreeware</a> <span><i class="fa fa-calendar"></i>{{ news_detail.published_time }}</span> <a href="{% url 'categoryview' news_detail.category %}"><i class="fa fa-tags"></i>{{ news_detail.category }}</a><span> <i class="fa fa-eye" aria-hidden="true"></i>:{% get_hit_count for news_detail %}</span></div>
             <div class="single_page_content"> <img class="img-center" src="{{ news_detail.image.url }}" alt="">
               <p>{{ news_detail.body }}</p>
               <blockquote> {{ news_detail.body }} </blockquote>
-
+                {% for comment in comments %}
+                    <div class="comments">
+                    <p class="font-weight-bold">
+                        {{ comment.user }}
+                        <span class="text-muted font-monospace">{{ comment.created_time }}</span>
+                    </p>
+                    <p>
+                        {{ comment.body | linebreaks }}
+                    </p>
+                    </div>
+                {% endfor %}
+                <div class="col-8 card mb-4 mt-3">
+                    <div class="card-body">
+                        <h3>{% blocktrans %}Izoh qoldirish{% endblocktrans %}</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ comment_form.as_p }}
+                            <input type="submit" value="{% blocktrans %}Yuborish{% endblocktrans %}" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
             <ol class="breadcrumb">
                 <li><a href="{% url 'updateview' news_detail.slug %}" class="">Tahrirlash</a></li>
                 <li><a href="{% url 'deleteview' news_detail.slug %}" class="">O'chirish</a></li>
             </ol>
-
               <ul>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
                 <li>Nullam vitae nibh odio, non scelerisque nibh</li>
@@ -89,7 +111,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Ommabop</span></h2>
+            <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
             <ul class="spost_nav">
                 {% if sport_one %}
               <li>

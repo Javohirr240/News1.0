@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-26 14:44+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: config/settings.py:123
+msgid "Uzbek"
+msgstr ""
+
+#: config/settings.py:124
+msgid "English"
+msgstr ""
+
+#: config/settings.py:125
+msgid "Russian"
+msgstr ""
+
+#: templates/news/404.html:10
+msgid "We Are Sorry"
+msgstr "We Are Sorry"
+
+#: templates/news/404.html:12
+msgid ""
+"Unfortunately, the page you were looking for could not be found. It may be "
+"temporarily unavailable, moved or no longer exists"
+msgstr "Unfortunately, the page you were looking for could not be found. It may be "
+"temporarily unavailable, moved or no longer exists"
+
+#: templates/news/404.html:13
+msgid "Go to home page"
+msgstr "Go to home page"
+
+#: templates/news/404.html:19 templates/news/admin.html:33
+#: templates/news/category.html:48 templates/news/contact.html:24
+#: templates/news/create.html:21 templates/news/delete.html:22
+#: templates/news/index.html:184 templates/news/search_resault.html:58
+#: templates/news/single_page.html:114 templates/news/update.html:22
+msgid "Ommabop"
+msgstr "Popular"
+
+#: templates/news/admin.html:12
+msgid "Ism"
+msgstr "Name"
+
+#: templates/news/admin.html:13
+msgid "Familiya"
+msgstr "Lastname"
+
+#: templates/news/admin.html:14
+msgid "Email"
+msgstr "Email"
+
+#: templates/news/base.html:42 templates/news/index.html:4
+#: templates/news/single_page.html:12
+msgid "Bosh sahifa"
+msgstr "Home Page"
+
+#: templates/news/base.html:43
+msgid "Biz haqimizda"
+msgstr "About Us"
+
+#: templates/news/base.html:44
+msgid "Biz bilan bog'lanish"
+msgstr "Contact Us"
+
+#: templates/news/base.html:88
+msgid "Qidiruv"
+msgstr "Search"
+
+#: templates/news/base.html:106 templates/news/contact.html:10
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: templates/news/base.html:107
+msgid "404 Page"
+msgstr "404 Page"
+
+#: templates/news/base.html:109
+msgid "+aDD New"
+msgstr "+aDD New"
+
+#: templates/news/base.html:110
+msgid "admin"
+msgstr "Admin"
+
+#: templates/news/base.html:119 templates/news/index.html:23
+msgid "So'ngi yangiliklar"
+msgstr "Latest News"
+
+#: templates/news/category.html:3
+msgid "Category"
+msgstr "Category"
+
+#: templates/news/contact.html:3
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/news/contact.html:11
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem "
+"ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, "
+"consectetur adipisicing elit."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod "
+"tempor incididunt ut labolore magna aliqua. Ut enim ad minim veniam. Lorem "
+"ipsum dosectetur adipisicing elit, sed do.Lorem ipsum dolor sit amet, "
+"consectetur adipisicing elit."
+
+#: templates/news/contact.html:16
+msgid "Xabar jo'natish"
+msgstr "Send Message"
+
+#: templates/news/create.html:3
+msgid "Create New"
+msgstr "Create Innovation"
+
+#: templates/news/delete.html:4
+msgid "DELETE"
+msgstr "Delete"
+
+#: templates/news/delete.html:14
+msgid "Tasdiqlash"
+msgstr "Confirmation"
+
+#: templates/news/index.html:48
+msgid "Sport"
+msgstr "Sport"
+
+#: templates/news/index.html:80
+msgid "Mahalliy"
+msgstr "Local"
+
+#: templates/news/index.html:108
+msgid "Xorijiy"
+msgstr "Foreign"
+
+#: templates/news/index.html:136 templates/news/index.html:231
+msgid "Photography"
+msgstr "Photography"
+
+#: templates/news/index.html:150
+msgid "Texnika"
+msgstr "Technique"
+
+#: templates/news/index.html:225
+msgid "Sports"
+msgstr "Sports"
+
+#: templates/news/index.html:226
+msgid "Fashion"
+msgstr "Fashion"
+
+#: templates/news/index.html:227
+msgid "Business"
+msgstr "Business"
+
+#: templates/news/index.html:228
+msgid "Technology"
+msgstr "Technology"
+
+#: templates/news/index.html:229
+msgid "Games"
+msgstr "Games"
+
+#: templates/news/index.html:230
+msgid "Life &amp; Style"
+msgstr "Life &amp; Style"
+
+#: templates/news/search_resault.html:3
+msgid "Search"
+msgstr "Search"
+
+#: templates/news/search_resault.html:9
+msgid "Qidiruv natijasi"
+msgstr "Search Result"
+
+#: templates/news/single_page.html:4
+msgid "New Detail"
+msgstr "New Detail"
+
+#: templates/news/single_page.html:35
+msgid "Izoh qoldirish"
+msgstr "Write a comment"
+
+#: templates/news/single_page.html:39
+msgid "Yuborish"
+msgstr "Send"
+
+#: templates/news/update.html:4
+msgid "UPDATE"
+msgstr "Upadate"
+
+#: templates/news/update.html:14
+msgid "Tahrirlash"
+msgstr "Update"

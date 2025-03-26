@@ -15,7 +15,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from .forms import ContactForm
+from .forms import ContactForm, CommentForm
 from .models import News, Category
 from .mixins import CustomMixins
 
@@ -27,17 +27,12 @@ class NewsListView(ListView):
         return News.published.all()
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['xorij_news'] = News.published.filter(category__name='Xorijiy')[:5]
-        context['mahalliy_news'] = News.published.filter(category__name='Mahalliy')[:5]
-        context['sport_news'] = News.published.filter(category__name='Sport')[:5]
-        context['texnik_news'] = News.published.filter(category__name='Texnika')[:5]
+        context['xorij_news'] = News.published.filter(Q(category__name='Xorijiy')|Q(category__name='Foreign')|Q(category__name='Иностранный'))[:5]
+        context['mahalliy_news'] = News.published.filter(Q(category__name='Mahalliy')|Q(category__name='Local')|Q(category__name='Местный'))[:5]
+        context['sport_news'] = News.published.filter(Q(category__name='Sport')|Q(category__name='Sport')|Q(category__name='Спорт'))[:5]
+        context['texnik_news'] = News.published.filter(Q(category__name='Texnika')|Q(category__name='Technique')|Q(category__name='Техника'))[:5]
         return context
-class NewsDetailView(LoginRequiredMixin,DetailView):
-    model = News
-    template_name = 'news/single_page.html'
-    context_object_name = 'news_detail'
-    def get_queryset(self):
-        return News.published.filter(slug=self.kwargs['slug'])
+
 
 class NewsCategoryView(ListView):
     model = News
@@ -77,7 +72,7 @@ class NewsDeleteView(CustomMixins,DeleteView):
 class NewsCreateView(CustomMixins, CreateView ):
     model = News
     template_name = 'news/create.html'
-    fields = ['title', 'body','image','category','status']
+    fields = ['title', 'title_uz','title_en','title_ru','body','body_uz','body_en','body_ru','image','category','status']
     def get_success_url(self):
         if self.object.status == 'DF':
             return reverse_lazy('index')
@@ -91,3 +86,55 @@ def adminView(request):
         'users': users,
     }
     return render(request, 'news/admin.html', context)
+
+from hitcount.views import HitCountDetailView, HitCountMixin
+
+from hitcount.utils import get_hitcount_model
+
+def post_detail(request, slug):
+    news_detail = get_object_or_404(News, slug=slug, status=News.Status.Published)
+    context = {}
+    hit_count = get_hitcount_model().objects.get_for_object(news_detail)
+    hits = hit_count.hits
+    hitcontext = context['hitcount']= {'pk': hit_count.pk}
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
+    if hit_count_response.hit_counted:
+        hits += 1
+        hitcontext['hit_counted'] = hit_count_response.hit_counted
+        hitcontext['hit_message'] = hit_count_response.hit_message
+        hitcontext['total_hits'] = hits
+    comments = news_detail.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.news = news_detail
+            new_comment.user = request.user
+            new_comment.save()
+            comment_form = CommentForm()
+    else:
+        comment_form = CommentForm()
+    context = {
+        'news_detail': news_detail,
+        'comment_form': comment_form,
+        'comments': comments,
+        'new_comment': new_comment,
+    }
+
+    return render(request, 'news/single_page.html', context)
+
+class NewsDetailView(LoginRequiredMixin,DetailView):
+    model = News
+    template_name = 'news/single_page.html'
+    context_object_name = 'news_detail'
+    def get_queryset(self):
+        return News.published.filter(slug=self.kwargs['slug'])
+
+class SearchResultsView(ListView):
+    model = News
+    template_name = 'news/search_resault.html'
+    context_object_name = 'barcha_yangiliklar'
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return News.published.filter(Q(title__icontains=query) | Q(body__icontains=query))

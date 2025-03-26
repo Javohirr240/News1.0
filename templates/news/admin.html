@@ -1,5 +1,6 @@
 {% extends 'news/base.html' %}
-{% block title %}404{% endblock title %}
+{% load i18n %}
+{% block title %}Admin{% endblock title %}
 {% block content %}
 <section id="contentSection">
     <div class="row">
@@ -8,9 +9,9 @@
               <table class="table table-bordered table-responsive table-striped">
                 <tr>
                     <th>Username</th>
-                    <th>Ism</th>
-                    <th>Familiya</th>
-                    <th>Email</th>
+                    <th>{% blocktrans %}Ism{% endblocktrans %}</th>
+                    <th>{% blocktrans %}Familiya{% endblocktrans %}</th>
+                    <th>{% blocktrans %}Email{% endblocktrans %}</th>
                 </tr>
 
                   {% for user in users %}
@@ -29,7 +30,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Ommabop</span></h2>
+            <h2><span>{% blocktrans %}Ommabop{% endblocktrans %}</span></h2>
             <ul class="spost_nav">
                 {% if sport_one %}
               <li>
